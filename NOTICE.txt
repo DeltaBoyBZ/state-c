@@ -1,0 +1,4 @@
+State-C is copyright 2023 Matthew Peter Smith 
+
+State-C is provided under the terms of the MIT License. 
+A copy of the license is found in the root of this repository. 
