@@ -1,0 +1,33 @@
+body
+{
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    color: white;
+    text-align: justify;
+}
+
+#homepage-button
+{
+    position: fixed;
+    background-color: #003300; 
+    left: 1vw; 
+    top: 2vw; 
+    padding: 1vw;
+    text-align: center;
+    font-size: 2vw;
+}
+
+a.basic
+{
+    color: white;
+    text-decoration: none; 
+}
+
+a.basic:visited
+{
+    color: white; 
+}
+
+

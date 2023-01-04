@@ -1,0 +1,51 @@
+#logo-div 
+{
+    color: white;    
+    font-size: 8vh; 
+    text-align: center;
+    font-family: Courier;
+    height: 20vh;
+}
+
+#master-div {
+    position: absolute; 
+    top: 30vh; 
+    left: 20vw;
+    width: 60vw;
+}
+
+.home-button 
+{
+    position: absolute;
+    font-size: 4vh; 
+    font-family: Courier;
+    background-color: #004400; 
+    color: white;
+    width: 40%;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    text-align: center;
+}
+
+.home-button:hover
+{
+    background-color: #006600;
+}
+
+#intro-button 
+{
+    left: 0;
+    width: 40%;
+}
+
+#repo-button 
+{
+    right: 0;
+    width: 40%;
+}
+
+a 
+{
+    text-decoration: none;
+}
+

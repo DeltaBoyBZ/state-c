@@ -1,0 +1,93 @@
+<html>
+    <head>
+        <title> state-sy - Introduction</title>
+        <link rel="stylesheet" href="https://deltaboybz.github.io/state-c/css/global.css">
+        <link rel="stylesheet" href="https://deltaboybz.github.io/state-c/css/guide.css">
+    </head>
+    <body>
+        <a class="basic" href="/"><div id="homepage-button">Home</div></a>
+        <h1 id="introduction-to-state-c">Introduction to State-C</h1>
+<p>The State-C project is a simple utility to embed various types of data into an applications data section.
+It is written in Go, but is primarily intended to help in the development of C and C++ applications.</p>
+<p>The basic idea is the following:</p>
+<ol>
+<li>
+<p>We write a file <code>foo</code> detailing data known at your software&rsquo;s compile time.</p>
+</li>
+<li>
+<p>We pass this file to State-C, which will produce <code>foo.asm</code>, the equivalent of this file in assembly code (NASM).
+A header file <code>foo.h</code> is also produced.</p>
+</li>
+<li>
+<p>This assembly file can be compiled to an object file <code>foo.o</code>.</p>
+</li>
+<li>
+<p>The object file can be linked into a larger project. Other components of the project can access the data in this file
+via labels defined in <code>foo.h</code>.</p>
+</li>
+</ol>
+<p>The type of data representable via State-C includes:</p>
+<ul>
+<li>Scalar integers and floats.</li>
+<li>Arrays of integers or floats.</li>
+<li>Tables with columns of integers and floats.</li>
+</ul>
+<p>Most of learning State-C is learning the syntax of State-C source files.</p>
+<h2 id="scalars">Scalars</h2>
+<p>Scalar values are declared quite simply with:</p>
+<pre><code>int a = 10
+float b = 8.67
+</code></pre>
+<h2 id="arrays">Arrays</h2>
+<p>Arrays are declared by specifying the type and a list of its elements.</p>
+<pre><code>array int fib 0 1 1 2 3 5 8 13 21
+array float pos 5.88 1.131 9.111
+</code></pre>
+<h2 id="tables">Tables</h2>
+<p>Tables are declared by giving the names and types of their fields,
+followed by a complete list of rows.</p>
+<pre><code>table bruh int a float b 
+69 3.14 
+420 2.718
+</code></pre>
+<h2 id="enums">Enums</h2>
+<p>Enums in State-C are simply a collection of integer scalars with related names.
+Their values are assigned sequentially starting from <code>0</code>.</p>
+<pre><code>enum category
+A B C D
+</code></pre>
+<h2 id="dumps">Dumps</h2>
+<p>Arbitary data can embedded as so:</p>
+<pre><code>dump message &quot;message.txt&quot;
+</code></pre>
+<p>Here <code>message.txt</code> might contain:</p>
+<pre><code>This is a text file, but this could be any arbitrary data. 
+</code></pre>
+<p>The header file will look something like:</p>
+<pre><code>#pragma once
+
+extern void* message; 
+extern int message_LEN;
+</code></pre>
+<p>The extra variable <code>message_LEN</code> details how many bytes <code>message.txt</code> contained.</p>
+<h2 id="prefixes">Prefixes</h2>
+<p>In order to avoid namespace contamination,
+it is recommended to give all data labels a prefix.</p>
+<pre><code>prefix res_ 
+int a = 10 
+</code></pre>
+<p>In this example, the resulting header file will look something like this:</p>
+<pre><code>#pragma once
+
+extern int res_a; 
+</code></pre>
+<h2 id="using-scalar-identifiers">Using Scalar Identifiers</h2>
+<p>Source files are parsed top-to-bottom, and any scalars defined earlier in a source file can be
+reused in later defintions.</p>
+<pre><code>float pi = 3.14
+float e  = 2.718
+array float cool_nums e pi 
+</code></pre>
+
+    </body>
+</html>
